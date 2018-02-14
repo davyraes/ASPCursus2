@@ -1,0 +1,11 @@
+﻿@model List<ASPCursus3.Models.Filiaal>
+<h2>Filialen</h2>
+<ul>
+    @foreach(var filiaal in Model)
+    {
+        var url = Url.Action("Verwijderen", "Filiaal", new { ID = filiaal.ID });
+        <li>@filiaal.ID @filiaal.Naam @MyHelpers.MilieuScore(filiaal.Gebouwd) @Html.DisplayFor(m=>filiaal.Gebouwd) 
+            @Html.DisplayFor(m=>filiaal.Waarde) @Html.DisplayFor(m=>filiaal.Eigenaar)<a href="@url"><img src="~/Images/delete.png" alt="delete"/></a>
+        </li>
+    }
+</ul>

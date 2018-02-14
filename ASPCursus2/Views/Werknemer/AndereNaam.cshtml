@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@{
+    var getal1 = 0;
+    var getal2 = 1;
+    while (getal2 < 100)
+    {
+        <text>@getal1, @getal2, </text>
+        getal1 += getal2;
+        getal2 += getal1;
+    }
+}

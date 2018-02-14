@@ -1,0 +1,6 @@
+﻿@model ASPCursus3.Models.Filiaal
+@{ 
+    ViewBag.Title = "verwijderen";
+}
+<h2>@Model.Naam verwijderen?</h2>
+    <form method="post" action="../Delete/@Model.ID"><input type="submit" value="Delete" /></form>
