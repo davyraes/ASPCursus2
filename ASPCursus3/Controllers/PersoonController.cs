@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -87,6 +88,22 @@ namespace ASPCursus3.Controllers
         {
             persoonService.Update(p);
             return RedirectToAction("Index");
+        }
+        public JsonResult ValidateDOB(string geboren)
+        {
+            DateTime parsedDOB;
+            if (!DateTime.TryParseExact(geboren, "yyyy-mm-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out parsedDOB))
+            {
+                return Json("Gelieve een geldige datum in te voeren (dd/mm/jjjj) !", JsonRequestBehavior.AllowGet);
+            }
+            else if (DateTime.Now < parsedDOB)
+            {
+                return Json("Voer een datum uit het verleden in !", JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json(true, JsonRequestBehavior.AllowGet);
+            }
         }
     }
 }

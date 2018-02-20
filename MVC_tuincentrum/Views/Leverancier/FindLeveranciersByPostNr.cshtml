@@ -1,0 +1,26 @@
+﻿@model List<MVC_tuincentrum.Models.Leverancier>
+
+@{
+    ViewBag.Title = "Leverancier per postnr";
+}
+
+<h2>Leveranciers met postnr @ViewBag.postnr</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Naam</th>
+            <th>Adres</th>
+            <th>Woonplaats</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelitem => item.Naam)</td>
+                <td>@Html.DisplayFor(modelitem => item.Adres)</td>
+                <td>@Html.DisplayFor(modelitem => item.Woonplaats)</td>
+            </tr>
+        }
+    </tbody>
+</table>
