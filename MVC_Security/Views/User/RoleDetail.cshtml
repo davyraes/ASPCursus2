@@ -1,0 +1,46 @@
+﻿@model MVC_Security.Models.RoleDetailViewModel
+@{
+    ViewBag.Title = "RoleDetail";
+}
+
+<h2>Detail van de rol @Model.RoleName</h2>
+<h3>Users :</h3>
+@if (Model.UsersUitRole.Count != 0)
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>delete user for role</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model.UsersUitRole)
+            {
+                <tr>
+                    <td>@user.Id</td>
+                    <td>@user.UserName</td>
+                    <td><a href="@Url.Action("VerwijderUserForRole", new { roleid = Model.RoleId, userid = user.Id })"><img src="~/Images/delete.png" alt="verwijderen" /></a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+<p>rol @Model.RoleName heeft geen members</p>
+}
+@using (Html.BeginForm("Membertoevoegen", "User", new { roleid = Model.RoleId }, FormMethod.Post))
+{
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <p class="panel-title">Kies een user om aan deze rol toe te voegen :</p>
+        </div>
+        <div class="panel-body">
+            <p>@Html.DropDownList("SelectUser")</p>
+            <p><input type="submit" value="Toevoegen" /></p>
+        </div>
+    </div>
+}
+@Html.ActionLink("Terug naar rolebeheer", "Rolebeheer", null, new { @class = "btn btn-default" })

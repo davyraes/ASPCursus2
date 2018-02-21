@@ -29,5 +29,7 @@ namespace MVC_Security.Models
         {
             return new ApplicationDbContext();
         }
+
+       // public DbSet<MVC_Security.Models.ApplicationUser> ApplicationUsers { get; set; }
     }
 }
