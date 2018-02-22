@@ -5,9 +5,9 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
-using MVC_Security.Models;
+using MVC_Bierenapplication.Models;
 
-namespace MVC_Security
+namespace MVC_Bierenapplication
 {
     public partial class Startup
     {
@@ -58,11 +58,11 @@ namespace MVC_Security
             //   appId: "",
             //   appSecret: "");
 
-            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            {
-                ClientId = "273510441347-egambhnnefaf6qodo6sr667cokno27vr.apps.googleusercontent.com",
-                ClientSecret = "wDiRExZ3kPzQV6qWu9qU1UNr"
-            });
+            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            //{
+            //    ClientId = "",
+            //    ClientSecret = ""
+            //});
         }
     }
 }
