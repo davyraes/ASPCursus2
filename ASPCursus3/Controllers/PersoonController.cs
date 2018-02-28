@@ -105,5 +105,35 @@ namespace ASPCursus3.Controllers
                 return Json(true, JsonRequestBehavior.AllowGet);
             }
         }
+        //public ActionResult FilterPersonen()
+        //{
+        //    return View(persoonService.FindAll());
+        //}
+        //[HttpPost]
+        //public ActionResult FilterPersonen(string gekozenGeslacht)
+        //{
+        //    var personen = persoonService.FindAll();
+        //    if (gekozenGeslacht == null || gekozenGeslacht == "Allebei")
+        //        return View(personen);
+        //    else
+        //    {
+        //        Geslacht gekozen = (Geslacht)Enum.Parse(typeof(Geslacht), gekozenGeslacht);
+        //        return View(personen.Where(p=>p.Geslacht==gekozen));
+        //    }
+        //}
+        public ActionResult FilterPersonen(string gekozenGeslacht="Allebei")
+        {
+            return View((object)gekozenGeslacht);
+        }
+        public PartialViewResult GetGefilterdePersonen(string gekozenGeslacht="Allebei")
+        {
+            IEnumerable<Persoon> personen = persoonService.FindAll();
+            if(gekozenGeslacht!="Allebei")
+            {
+                Geslacht gekozen = (Geslacht)Enum.Parse(typeof(Geslacht), gekozenGeslacht);
+                personen = personen.Where(p => p.Geslacht == gekozen);
+            }
+            return PartialView(personen);
+        }
     }
 }

@@ -38,5 +38,9 @@ namespace ASPCursus3.Controllers
             System.Web.HttpContext.Current.Application.UnLock();
             return View();
         }
+        public PartialViewResult GetTime()
+        {
+            return PartialView(DateTime.Now);
+        }
     }
 }
